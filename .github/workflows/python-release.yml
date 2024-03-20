@@ -37,9 +37,10 @@ jobs:
       uses: mathieudutour/github-tag-action@v6.2
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-    
+    - uses: actions/checkout@v4
     - name: Release
       uses: ncipollo/release-action@v1
       with:
         artifacts: "LICENSE,./dist/*.tar.gz,./dist/*.whl"
+        token: ${{ secrets.YOUR_GITHUB_TOKEN }}
         bodyFile: "README.md"
