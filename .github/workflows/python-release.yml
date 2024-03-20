@@ -46,5 +46,5 @@ jobs:
         tag: ${{ steps.tag_version.outputs.new_tag }}
         name: Release ${{ steps.tag_version.outputs.new_tag }}
         body: ${{ steps.tag_version.outputs.changelog }}
-        artifacts: "LICENSE,./dist/*.tar.gz,./dist/*.whl"
+        artifacts: "./dist/*.tar.gz,./dist/*.whl"
         token: ${{ secrets.GITHUB_TOKEN }}
