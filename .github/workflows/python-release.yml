@@ -40,6 +40,6 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: |
-          pysniper/build/*.whl
-          pysniper/build/*.tar.gz
+          ./dist/*.whl
+          ./dist/*.tar.gz
         generate_release_notes: true
