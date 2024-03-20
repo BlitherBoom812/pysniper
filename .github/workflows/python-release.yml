@@ -34,12 +34,12 @@ jobs:
     - name: Echo Path
       run: pwd
     - name: Echo file
-      run: ls pysniper/dist
+      run: ls -R
     - name: Release
       uses: softprops/action-gh-release@v2
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: |
-          pysniper/dist/*.whl
-          pysniper/dist/*.tar.gz
+          pysniper/build/*.whl
+          pysniper/build/*.tar.gz
         generate_release_notes: true
