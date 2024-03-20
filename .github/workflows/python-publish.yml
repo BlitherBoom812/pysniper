@@ -8,9 +8,7 @@
 
 name: Upload Python Package
 
-on:
-  release:
-    types: [published]
+on: [push]
 
 permissions:
   contents: read
@@ -32,8 +30,10 @@ jobs:
         pip install build
     - name: Build package
       run: python -m build
-    - name: Publish package
-      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      if: startsWith(github.ref, 'refs/tags/')
       with:
-        user: __token__
-        password: ${{ secrets.PYPI_API_TOKEN }}
+        files: |
+          dist/*
+        generate_release_notes: true
