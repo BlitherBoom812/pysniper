@@ -31,15 +31,13 @@ jobs:
         pip install build
     - name: Build package
       run: python -m build
-    - name: Echo Path
-      run: pwd
     - name: Echo file
-      run: ls -R
     - name: Release
       uses: softprops/action-gh-release@v2
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: |
+          LICENSE
           ./dist/*.whl
           ./dist/*.tar.gz
         generate_release_notes: true
